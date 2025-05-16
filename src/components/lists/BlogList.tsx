@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { LuCirclePlus } from "react-icons/lu";
 import type { Blog } from "../../types/interfaces";
@@ -23,6 +23,9 @@ const BlogList = ({ data, setData, handleConfirmDeletion }: BlogListProps) => {
   const [showViewDialog, setShowViewDialog] = useState(false);
   const [authors, setAuthors] = useState<Author[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     const getAllAuthors = async () => {
@@ -36,6 +39,26 @@ const BlogList = ({ data, setData, handleConfirmDeletion }: BlogListProps) => {
     getAllAuthors();
     getAllCategories();
   }, []);
+
+  const filteredData = useMemo(() => {
+    return data.filter((blog) => {
+      const matchesTitleOrTag =
+        blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        blog.tags?.some((tag) =>
+          tag.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+
+      const matchesStatus = selectedStatus
+        ? blog.status === selectedStatus
+        : true;
+
+      const matchesCategory = selectedCategory
+        ? blog.category === selectedCategory
+        : true;
+
+      return matchesTitleOrTag && matchesStatus && matchesCategory;
+    });
+  }, [data, searchQuery, selectedStatus, selectedCategory]);
 
   const handleClosePopover = () => {
     setIsPopoverOpen(false);
@@ -84,42 +107,89 @@ const BlogList = ({ data, setData, handleConfirmDeletion }: BlogListProps) => {
     }
   };
 
+  const columns = useMemo(
+    () =>
+      BlogColumns({
+        handleView,
+        handleEdit,
+        handleDelete,
+        authors,
+        categories,
+        handleStatusToggle,
+      }),
+    [authors, categories]
+  );
+
   const table = useReactTable({
-    data,
-    columns: BlogColumns({
-      handleView,
-      handleEdit,
-      handleDelete,
-      authors,
-      categories,
-      handleStatusToggle,
-    }),
+    data: filteredData,
+    columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const debounce = (func: (value: string) => void, delay: number) => {
+    let timeout: NodeJS.Timeout;
+    return (value: string) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func(value), delay);
+    };
+  };
+
+  const debouncedSetSearchQuery = debounce(setSearchQuery, 300);
   return (
     <div className="flex flex-col gap-10">
-      <Dialog.Root open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
-        <Dialog.Trigger asChild>
-          <button className="flex items-center justify-center w-32 gap-2 bg-[#1abc9c] text-white p-2 rounded-md">
-            <LuCirclePlus size={20} />
-            <span className="font-bold ">ADD BLOG</span>
-          </button>
-        </Dialog.Trigger>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 px-10 rounded-md max-w-xl w-full z-100">
-            <Dialog.Title className="text-center font-bold text-xl text-[#1abc9c]">
-              {selectedBlog ? "Update" : "Add"} Blog
-            </Dialog.Title>
-            <BlogForm
-              data={selectedBlog}
-              setData={setData}
-              onClose={handleClosePopover}
-            />
-            <Dialog.Close asChild></Dialog.Close>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
+      <div className="flex justify-between">
+        <Dialog.Root open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+          <Dialog.Trigger asChild>
+            <button className="flex items-center justify-center w-32 gap-2 bg-[#1abc9c] text-white p-2 rounded-md">
+              <LuCirclePlus size={20} />
+              <span className="font-bold ">ADD BLOG</span>
+            </button>
+          </Dialog.Trigger>
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
+            <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 px-10 rounded-md max-w-xl w-full z-100">
+              <Dialog.Title className="text-center font-bold text-xl text-[#1abc9c]">
+                {selectedBlog ? "Update" : "Add"} Blog
+              </Dialog.Title>
+              <BlogForm
+                data={selectedBlog}
+                setData={setData}
+                onClose={handleClosePopover}
+              />
+              <Dialog.Close asChild></Dialog.Close>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
+        <div className="flex flex-wrap gap-4 items-center">
+          <input
+            type="text"
+            placeholder="Search by title or tag..."
+            onChange={(e) => debouncedSetSearchQuery(e.target.value)}
+            className="p-2 border border-gray-400 rounded-md w-64"
+          />
+          <select
+            value={selectedStatus}
+            onChange={(e) => setSelectedStatus(e.target.value)}
+            className="p-2 border border-gray-400 rounded-md"
+          >
+            <option value="">All Status</option>
+            <option value="Published">Published</option>
+            <option value="Draft">Draft</option>
+          </select>
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="p-2 border border-gray-400 rounded-md"
+          >
+            <option value="">All Categories</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
       <DataTable table={table} />
       <DeleteDialog
