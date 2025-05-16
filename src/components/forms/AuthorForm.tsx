@@ -69,9 +69,11 @@ const AutherForm = ({ setData, onClose, data }: AuthorFormProps) => {
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
       setValue("avatar", previewUrl);
+      fileRef.current = file;
     } else {
       setImagePreview(null);
       setValue("avatar", "");
+      fileRef.current = null;
     }
   };
 

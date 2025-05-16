@@ -14,32 +14,34 @@
       "status": "Published",
       "coverImage": "https://i.ibb.co/whY93dqY/tutor-girl-sitting-table.jpg",
       "createdDate": 1747381158913
+    },
+    {
+      "id": "306a",
+      "title": "Singing",
+      "body": "there are many singers in the world",
+      "author": "a149",
+      "category": "f527",
+      "tags": [
+        "singer",
+        "voice of nepal"
+      ],
+      "status": "Published",
+      "coverImage": "https://i.ibb.co/zVz1w5Hs/88028.jpg",
+      "createdDate": 1747395055440
     }
   ],
   "authors": [
     {
-      "id": "2e4c",
-      "name": "sunita thapa",
-      "avatar": "blob:http://localhost:5173/535ab6b7-a0e9-4161-bebd-a5de0e8cf8a3",
-      "bio": "hello I am sunita thapa"
+      "id": "0d22",
+      "name": "Juna Thapa",
+      "avatar": "https://i.ibb.co/VcdzRTZJ/Cam-Scanner-04-27-2024-16-17-01-1.jpg",
+      "bio": "Hi , I am a blogger"
     },
     {
-      "id": "1778",
-      "name": "prakash thapa",
-      "avatar": "blob:http://localhost:5173/374d4f45-1cf7-415f-a6e8-64db089d7777",
-      "bio": "I am prakash thapa"
-    },
-    {
-      "id": "a149",
-      "name": "rekha basnet",
-      "avatar": "blob:http://localhost:5173/eca370bd-9796-45d1-90e2-0006de137891",
-      "bio": "I am rekha"
-    },
-    {
-      "id": "fb66",
-      "name": "Durga Rokaya",
-      "avatar": "blob:http://localhost:5173/b192e421-9dd5-431e-8bc1-c6f6188dd63f",
-      "bio": "I am durga"
+      "id": "1fd7",
+      "name": "Prakash Thapa",
+      "avatar": "https://i.ibb.co/zVz1w5Hs/88028.jpg",
+      "bio": "Passionate eletrical engineer"
     }
   ],
   "categories": [
