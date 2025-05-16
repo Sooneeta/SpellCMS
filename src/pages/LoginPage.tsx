@@ -10,10 +10,16 @@ import { IoEye } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const token = localStorage.getItem("authToken");
   const navigate = useNavigate();
+
+  if (token) {
+    return <Navigate to={"/blogs"} replace />;
+  }
   const {
     register,
     handleSubmit,
