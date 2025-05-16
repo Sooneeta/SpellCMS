@@ -29,6 +29,7 @@ const CategoryPage = () => {
       <div className="flex gap-2">
         <input
           placeholder="Enter category"
+          id="category"
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}

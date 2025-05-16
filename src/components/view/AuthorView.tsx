@@ -51,7 +51,6 @@ const AuthorView = ({ isOpen, onClose, selectedAuthor }: AuthorViewProps) => {
         <Dialog.Overlay className="fixed inset-0 bg-black/50 animate-fade-in" />
         <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-xl">
           <div className="space-y-6">
-            {/* Avatar Image */}
             {author.avatar && (
               <div className="flex justify-center">
                 <img
@@ -65,17 +64,10 @@ const AuthorView = ({ isOpen, onClose, selectedAuthor }: AuthorViewProps) => {
               </div>
             )}
 
-            {/* Author Name */}
             <Dialog.Title className="text-2xl font-bold text-gray-900 text-center">
               {author.name}
             </Dialog.Title>
 
-            {/* Author ID */}
-            <div className="text-sm text-gray-600 text-center">
-              ID: {author.id}
-            </div>
-
-            {/* Bio */}
             {author.bio && (
               <div className="prose prose-sm text-gray-700 text-center">
                 <p>{author.bio}</p>
@@ -83,7 +75,6 @@ const AuthorView = ({ isOpen, onClose, selectedAuthor }: AuthorViewProps) => {
             )}
           </div>
 
-          {/* Close Button */}
           <Dialog.Close className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
             <RxCross2 size={24} />
           </Dialog.Close>

@@ -73,6 +73,8 @@ export interface BlogViewProps {
     isOpen: boolean;
     onClose: () => void;
     selectedBlog: Blog | undefined;
+    authors: Author[];
+    categories: Category[];
 }
 
 export interface AuthorViewProps {
