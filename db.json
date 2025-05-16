@@ -1,0 +1,63 @@
+{
+  "blogs": [
+    {
+      "id": "7297",
+      "title": "Education",
+      "body": "education sector is progressing in nepal",
+      "author": "2e4c",
+      "category": "f27b",
+      "tags": [
+        "education",
+        "learning",
+        "student"
+      ],
+      "status": "Published",
+      "coverImage": "https://i.ibb.co/whY93dqY/tutor-girl-sitting-table.jpg",
+      "createdDate": 1747381158913
+    }
+  ],
+  "authors": [
+    {
+      "id": "2e4c",
+      "name": "sunita thapa",
+      "avatar": "blob:http://localhost:5173/535ab6b7-a0e9-4161-bebd-a5de0e8cf8a3",
+      "bio": "hello I am sunita thapa"
+    },
+    {
+      "id": "1778",
+      "name": "prakash thapa",
+      "avatar": "blob:http://localhost:5173/374d4f45-1cf7-415f-a6e8-64db089d7777",
+      "bio": "I am prakash thapa"
+    },
+    {
+      "id": "a149",
+      "name": "rekha basnet",
+      "avatar": "blob:http://localhost:5173/eca370bd-9796-45d1-90e2-0006de137891",
+      "bio": "I am rekha"
+    },
+    {
+      "id": "fb66",
+      "name": "Durga Rokaya",
+      "avatar": "blob:http://localhost:5173/b192e421-9dd5-431e-8bc1-c6f6188dd63f",
+      "bio": "I am durga"
+    }
+  ],
+  "categories": [
+    {
+      "id": "f527",
+      "name": "Travel"
+    },
+    {
+      "id": "f27b",
+      "name": "Tourism"
+    },
+    {
+      "id": "e1e1",
+      "name": "Mountain"
+    },
+    {
+      "id": "faaa",
+      "name": "moutain"
+    }
+  ]
+}
