@@ -89,25 +89,6 @@ const BlogForm = ({ setData, onClose, data }: BlogFormProps) => {
     },
   });
 
-  // const mutation = useMutation({
-  //   mutationFn: async (submittedData: z.infer<typeof blogSchema>) => {
-  //     const formData = {
-  //       ...submittedData,
-  //       createdDate: Date.now(),
-  //     };
-
-  //     return data?.id ? updateBlog(data?.id, formData) : createBlog(formData);
-  //   },
-  //   onSuccess: (response: any) => {
-  //     console.log("res", response);
-  //     setData(response);
-  //     onClose();
-  //   },
-  //   onError: (error: Error) => {
-  //     console.log("err", error);
-  //   },
-  // });
-
   const onSubmit = (values: z.infer<typeof blogSchema>) => {
     mutation.mutate(values);
   };

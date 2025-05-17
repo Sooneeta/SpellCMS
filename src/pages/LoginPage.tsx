@@ -57,7 +57,7 @@ const LoginPage = () => {
 
   return (
     <div className="flex justify-center min-h-screen items-center">
-      <div className="flex flex-col gap-10 justify-center w-[30%] border-2 border-[#1abc9c] py-24 rounded-md">
+      <div className="flex flex-col gap-10 justify-center px-8  md:w-[30%] border-2 border-[#1abc9c] py-24 rounded-md">
         <div className="flex flex-col gap-4 items-center">
           <h1 className="text-2xl font-bold text-[#1abc9c]">
             Welcome to Blog Manager

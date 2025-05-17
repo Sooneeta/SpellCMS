@@ -42,7 +42,7 @@ Filter: Filter blog posts by status (Draft/Published) or category.
 Technical Stack
 
 Framework: React.js with TypeScript
-Styling: Tailwind CSS (clean, mobile-responsive layout)
+Styling: Tailwind CSS
 Forms: React Hook Form with Zod for validation
 State Management: React Query for API data fetching and caching
 Routing: React Router DOM for navigation
