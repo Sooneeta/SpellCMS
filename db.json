@@ -28,6 +28,22 @@
       "status": "Published",
       "coverImage": "https://i.ibb.co/zVz1w5Hs/88028.jpg",
       "createdDate": 1747395055440
+    },
+    {
+      "id": "df82",
+      "title": "Politics",
+      "body": "Nowadays, young leaders are coming in the politics which has made gread impact in different aspects of country",
+      "author": "0d22",
+      "category": "f527",
+      "tags": [
+        "politics",
+        "leader",
+        "country",
+        "nepal"
+      ],
+      "status": "Draft",
+      "coverImage": "https://i.ibb.co/PZygXrx0/5651999.jpg",
+      "createdDate": 1747444649521
     }
   ],
   "authors": [
@@ -46,8 +62,8 @@
   ],
   "categories": [
     {
-      "id": "f527",
-      "name": "Travel"
+      "name": "travel nepal",
+      "id": "f527"
     },
     {
       "id": "f27b",
@@ -58,8 +74,8 @@
       "name": "Mountain"
     },
     {
-      "id": "faaa",
-      "name": "moutain"
+      "id": "7d64",
+      "name": "Politics"
     }
   ]
 }

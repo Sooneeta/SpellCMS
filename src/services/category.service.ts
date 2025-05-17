@@ -27,7 +27,7 @@ const updateCategory = async (id: string, params: any) => {
     return res.json();
 };
 
-const deleteCategory = async (id: string) => {
+const deleteCategory = async (id: string | undefined) => {
     const res = await fetch(`${API_BASE_URL}/categories/${id}`, {
         method: "DELETE",
     });
