@@ -21,13 +21,17 @@ const PopupDialog = ({
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
         <Dialog.Content
-          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 px-10 rounded-md md:max-w-xl  w-full z-100"
+          className="fixed inset-0 flex items-center justify-center p-4 z-50"
           aria-describedby="dialog-description"
         >
-          <div className="w-full relative">
+          <div className="bg-white w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-md p-4 px-6 relative">
+            <div id="dialog-description" className="sr-only">
+              preview popup dialog
+            </div>
+
             {children}
 
-            <Dialog.Close className="absolute top-0 right-0 text-gray-500 hover:text-gray-700 cursor-pointer">
+            <Dialog.Close className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 cursor-pointer">
               <RxCross2 size={24} />
             </Dialog.Close>
           </div>
