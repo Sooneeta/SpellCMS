@@ -10,6 +10,7 @@ import { DataTable } from "../DataTable";
 import { useReactTable, getCoreRowModel } from "@tanstack/react-table";
 import DeleteDialog from "../DeleteDialog";
 import AuthorView from "../view/AuthorView";
+import PopupDialog from "../dialogs/PopupDialog";
 
 const AuthorList = ({
   data,
@@ -59,28 +60,25 @@ const AuthorList = ({
 
   return (
     <div className="flex flex-col gap-10">
-      <Dialog.Root open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
-        <Dialog.Trigger asChild>
+      <PopupDialog
+        open={isPopoverOpen}
+        onOpenChange={setIsPopoverOpen}
+        trigger={
           <button className="flex items-center justify-center w-[30%] md:w-[13%] gap-2 bg-[#1abc9c] text-white py-2 rounded-md">
             <LuCirclePlus size={20} />
             <span className="font-bold">ADD AUTHOR</span>
           </button>
-        </Dialog.Trigger>
-        <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
-          <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-md max-w-md w-full z-100">
-            <Dialog.Title>
-              {selectedAuthor ? "Update" : "Add"} Author
-            </Dialog.Title>
-            <AutherForm
-              data={selectedAuthor}
-              setData={setData}
-              onClose={handleClosePopover}
-            />
-            <Dialog.Close asChild></Dialog.Close>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
+        }
+      >
+        <Dialog.Title className="text-center font-bold text-xl text-[#1abc9c]">
+          {selectedAuthor ? "Update" : "Add"} Author
+        </Dialog.Title>
+        <AutherForm
+          data={selectedAuthor}
+          setData={setData}
+          onClose={handleClosePopover}
+        />
+      </PopupDialog>
       <DataTable table={table} />
       <DeleteDialog
         isOpen={showDeleteDialog}

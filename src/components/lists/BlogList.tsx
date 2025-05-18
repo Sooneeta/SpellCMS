@@ -15,6 +15,7 @@ import { updateBlog } from "../../services/blog.service";
 import { fetchCategories } from "../../services/category.service";
 import type { Category } from "../../types/interfaces";
 import BlogView from "../view/BlogView";
+import PopupDialog from "../dialogs/PopupDialog";
 
 const BlogList = ({ data, setData, handleConfirmDeletion }: BlogListProps) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -138,28 +139,25 @@ const BlogList = ({ data, setData, handleConfirmDeletion }: BlogListProps) => {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex justify-between">
-        <Dialog.Root open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
-          <Dialog.Trigger asChild>
+        <PopupDialog
+          open={isPopoverOpen}
+          onOpenChange={setIsPopoverOpen}
+          trigger={
             <button className="flex items-center justify-center w-32 gap-2 bg-[#1abc9c] text-white p-2 rounded-md">
               <LuCirclePlus size={20} />
               <span className="font-bold ">ADD BLOG</span>
             </button>
-          </Dialog.Trigger>
-          <Dialog.Portal>
-            <Dialog.Overlay className="fixed inset-0 bg-black/50 z-50" />
-            <Dialog.Content className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 px-10 rounded-md max-w-xl w-full z-100">
-              <Dialog.Title className="text-center font-bold text-xl text-[#1abc9c]">
-                {selectedBlog ? "Update" : "Add"} Blog
-              </Dialog.Title>
-              <BlogForm
-                data={selectedBlog}
-                setData={setData}
-                onClose={handleClosePopover}
-              />
-              <Dialog.Close asChild></Dialog.Close>
-            </Dialog.Content>
-          </Dialog.Portal>
-        </Dialog.Root>
+          }
+        >
+          <Dialog.Title className="text-center font-bold text-xl text-[#1abc9c]">
+            {selectedBlog ? "Update" : "Add"} Blog
+          </Dialog.Title>
+          <BlogForm
+            data={selectedBlog}
+            setData={setData}
+            onClose={handleClosePopover}
+          />
+        </PopupDialog>
         <div className="flex flex-wrap gap-4 items-center">
           <input
             type="text"

@@ -74,14 +74,14 @@ const CategoryPage = () => {
 
   return (
     <main className=" flex flex-col gap-20">
-      <div className="flex flex-col gap-4 md:flex gap-2">
+      <div className="flex flex-col gap-4 md:flex-row gap-2">
         <input
           placeholder="Enter category"
           id="category"
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="md:w-64 p-2 border-2 border-[#1abc9c]"
+          className="md:w-72 p-2 border-2 border-[#1abc9c]"
         />
         <button
           className="flex items-center justify-center w-[70%]  md:w-[21%] gap-2 bg-[#1abc9c] text-white py-2  rounded-md"
