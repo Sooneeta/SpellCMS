@@ -61,7 +61,7 @@ const AuthorList = ({
     <div className="flex flex-col gap-10">
       <Dialog.Root open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
         <Dialog.Trigger asChild>
-          <button className="flex items-center justify-center w-[13%] gap-2 bg-[#1abc9c] text-white py-2 rounded-md">
+          <button className="flex items-center justify-center w-[30%] md:w-[13%] gap-2 bg-[#1abc9c] text-white py-2 rounded-md">
             <LuCirclePlus size={20} />
             <span className="font-bold">ADD AUTHOR</span>
           </button>

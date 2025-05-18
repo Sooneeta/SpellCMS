@@ -73,22 +73,22 @@ const CategoryPage = () => {
   };
 
   return (
-    <main className="p-6 flex flex-col gap-20">
-      <div className="flex gap-2">
+    <main className=" flex flex-col gap-20">
+      <div className="flex flex-col gap-4 md:flex gap-2">
         <input
           placeholder="Enter category"
           id="category"
           type="text"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-64 p-2 border-2 border-[#1abc9c]"
+          className="md:w-64 p-2 border-2 border-[#1abc9c]"
         />
         <button
-          className="flex items-center justify-center w-[15%] gap-2 bg-[#1abc9c] text-white p-2 rounded-md"
+          className="flex items-center justify-center w-[70%]  md:w-[21%] gap-2 bg-[#1abc9c] text-white py-2  rounded-md"
           onClick={handleAddUpdateCategory}
         >
           <LuCirclePlus size={20} />
-          <span className="font-bold ">ADD CATEGORY</span>
+          <span className="font-bold ">ADD/UPDATE CATEGORY</span>
         </button>
       </div>
       <div className="flex flex-wrap gap-6">
